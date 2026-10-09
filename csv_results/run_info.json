@@ -1,0 +1,58 @@
+{
+ "date_utc": "2026-10-09T11:48:39+00:00",
+ "solver": {
+  "name": "CBC (COIN-OR)",
+  "gurobipy_version": null,
+  "time_limit_s": 600,
+  "status_required": "OPTIMAL (default relative MIP gap 1e-4)"
+ },
+ "python": "3.14.7",
+ "packages": {
+  "mip": "2.0.0",
+  "numpy": "2.5.1",
+  "scipy": "1.18.0",
+  "matplotlib": "3.11.1",
+  "networkx": "3.6.1"
+ },
+ "hardware": {
+  "machine": "AMD64",
+  "processor": "Intel64 Family 6 Model 181 Stepping 0, GenuineIntel",
+  "system": "Windows-11-10.0.26200-SP0"
+ },
+ "settings": {
+  "lambda_attack": 2,
+  "lambda_defender": 1,
+  "defense_pattern": "exponential",
+  "h_values": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "nu": "uniform on V \\ F",
+  "V_spot": "V \\ (F u entries)",
+  "dirichlet": {
+   "lam": 0.5,
+   "M": 10,
+   "alpha_floor": 0.001,
+   "K_train": 500,
+   "K_eval": 2000,
+   "seed_train": 1,
+   "seed_eval": 2
+  },
+  "random_baseline": "exact enumeration if <= 2e6 evaluations, else 1000 samples, seed 42",
+  "ties": "attacker: first action in edge-list order; blind defender: first deployment in lexicographic order; shortest path: node index"
+ },
+ "wall_clock_s": {
+  "stackelberg_MARA": 2.49,
+  "stackelberg_MiR100": 0.04,
+  "stackelberg_Unguard": 20.92,
+  "blind_MARA": 0.0,
+  "blind_MiR100": 0.01,
+  "blind_Unguard": 21.71,
+  "dirichlet_MARA": 0.68,
+  "dirichlet_MiR100": 1.11,
+  "dirichlet_Unguard": 86.27
+ }
+}

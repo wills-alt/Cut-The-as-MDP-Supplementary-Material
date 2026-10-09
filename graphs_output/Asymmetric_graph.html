@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#90EE90", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 0, "label": "0\nNation-state APT entry (very\nrare)", "shape": "box", "title": "Nation-state APT entry (very rare)"}, {"color": "#90EE90", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 1, "label": "1\nOrganized crime entry (rare)", "shape": "box", "title": "Organized crime entry (rare)"}, {"color": "#90EE90", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 2, "label": "2\nScript kiddie entry (common)", "shape": "box", "title": "Script kiddie entry (common)"}, {"color": "#90EE90", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 3, "label": "3\nOpportunistic bot entry (very\ncommon)", "shape": "box", "title": "Opportunistic bot entry (very common)"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 4, "label": "4\nSupply chain foothold", "shape": "box", "title": "Supply chain foothold"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 5, "label": "5\nFirmware implant", "shape": "box", "title": "Firmware implant"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 6, "label": "6\nHypervisor escape", "shape": "box", "title": "Hypervisor escape"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 7, "label": "7\nStealth persistence layer", "shape": "box", "title": "Stealth persistence layer"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 8, "label": "8\nCredential theft gateway", "shape": "box", "title": "Credential theft gateway"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 9, "label": "9\nPrivilege escalation service", "shape": "box", "title": "Privilege escalation service"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 10, "label": "10\nDomain controller access", "shape": "box", "title": "Domain controller access"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 11, "label": "11\nWeb app vulnerability", "shape": "box", "title": "Web app vulnerability"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 12, "label": "12\nAPI abuse node", "shape": "box", "title": "API abuse node"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 13, "label": "13\nInternal service hop", "shape": "box", "title": "Internal service hop"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 14, "label": "14\nUser data access", "shape": "box", "title": "User data access"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 15, "label": "15\nMisconfigured service", "shape": "box", "title": "Misconfigured service"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 16, "label": "16\nRate-limit bypass", "shape": "box", "title": "Rate-limit bypass"}, {"color": "#87CEEB", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 17, "label": "17\nTemporary workload access", "shape": "box", "title": "Temporary workload access"}, {"color": "#B0C4DE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 18, "label": "18\nCore infrastructure", "shape": "box", "title": "Core infrastructure"}, {"color": "#B0C4DE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 19, "label": "19\nControl plane", "shape": "box", "title": "Control plane"}, {"color": "#B0C4DE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 20, "label": "20\nData plane", "shape": "box", "title": "Data plane"}, {"color": "#E4AEAE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 21, "label": "21\nCRITICAL: Full system takeover", "shape": "box", "title": "CRITICAL: Full system takeover"}, {"color": "#E4AEAE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 22, "label": "22\nCRITICAL: Long-term stealth\ncompromise", "shape": "box", "title": "CRITICAL: Long-term stealth compromise"}, {"color": "#E4AEAE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 23, "label": "23\nHIGH: Sensitive data\nexfiltration", "shape": "box", "title": "HIGH: Sensitive data exfiltration"}, {"color": "#E4AEAE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 24, "label": "24\nMEDIUM: Service disruption", "shape": "box", "title": "MEDIUM: Service disruption"}, {"color": "#E4AEAE", "font": {"face": "Arial", "multi": false, "size": 12}, "id": 25, "label": "25\nLOW: Transient outage", "shape": "box", "title": "LOW: Transient outage"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": 0, "label": "Vendor compromise", "title": "Vendor compromise", "to": 4}, {"arrows": "to", "from": 1, "label": "Phishing campaign", "title": "Phishing campaign", "to": 8}, {"arrows": "to", "from": 2, "label": "SQL/XSS exploit", "title": "SQL/XSS exploit", "to": 11}, {"arrows": "to", "from": 3, "label": "Internet-wide scan", "title": "Internet-wide scan", "to": 15}, {"arrows": "to", "from": 4, "label": "Signed firmware update", "title": "Signed firmware update", "to": 5}, {"arrows": "to", "from": 5, "label": "Virtualization escape", "title": "Virtualization escape", "to": 6}, {"arrows": "to", "from": 6, "label": "Undetectable persistence", "title": "Undetectable persistence", "to": 7}, {"arrows": "to", "from": 6, "label": "Immediate total takeover", "title": "Immediate total takeover", "to": 21}, {"arrows": "to", "from": 7, "label": "Silent core access", "title": "Silent core access", "to": 18}, {"arrows": "to", "from": 7, "label": "Stealth long-term control", "title": "Stealth long-term control", "to": 22}, {"arrows": "to", "from": 8, "label": "Token replay", "title": "Token replay", "to": 9}, {"arrows": "to", "from": 9, "label": "Directory abuse", "title": "Directory abuse", "to": 10}, {"arrows": "to", "from": 10, "label": "Admin-level access", "title": "Admin-level access", "to": 18}, {"arrows": "to", "from": 10, "label": "Bulk data theft", "title": "Bulk data theft", "to": 23}, {"arrows": "to", "from": 11, "label": "API scraping", "title": "API scraping", "to": 12}, {"arrows": "to", "from": 12, "label": "Microservice hop", "title": "Microservice hop", "to": 13}, {"arrows": "to", "from": 13, "label": "User DB access", "title": "User DB access", "to": 14}, {"arrows": "to", "from": 14, "label": "Partial data plane access", "title": "Partial data plane access", "to": 20}, {"arrows": "to", "from": 14, "label": "Service degradation", "title": "Service degradation", "to": 24}, {"arrows": "to", "from": 15, "label": "Quota exhaustion", "title": "Quota exhaustion", "to": 16}, {"arrows": "to", "from": 16, "label": "Ephemeral container access", "title": "Ephemeral container access", "to": 17}, {"arrows": "to", "from": 17, "label": "Limited data plane", "title": "Limited data plane", "to": 20}, {"arrows": "to", "from": 17, "label": "Minor outage", "title": "Minor outage", "to": 25}, {"arrows": "to", "from": 18, "label": "Control escalation", "title": "Control escalation", "to": 19}, {"arrows": "to", "from": 19, "label": "Platform takeover", "title": "Platform takeover", "to": 21}, {"arrows": "to", "from": 19, "label": "Cross-tenant data leak", "title": "Cross-tenant data leak", "to": 23}, {"arrows": "to", "from": 20, "label": "Data exposure", "title": "Data exposure", "to": 23}, {"arrows": "to", "from": 20, "label": "Regional outage", "title": "Regional outage", "to": 24}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"interaction": {"dragNodes": true, "dragView": true, "hover": true, "zoomView": true}, "nodes": {"borderWidth": 1}, "edges": {"arrows": {"to": {"enabled": true}}, "smooth": {"enabled": true, "type": "dynamic"}}, "physics": {"stabilization": {"enabled": true, "iterations": 500}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    
+<script type="text/javascript">
+  (function(){
+    if (typeof network !== 'undefined') {
+      network.once('stabilized', function () {
+        network.setOptions({physics:{enabled:false}});
+      });
+      network.once('stabilizationIterationsDone', function () {
+        network.setOptions({physics:{enabled:false}});
+      });
+    }
+  })();
+</script>
+</body>
+
+</html>

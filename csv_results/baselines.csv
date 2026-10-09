@@ -1,0 +1,226 @@
+graph,regime,h,method,value,placement
+MARA,stackelberg,1,optimal,0.2962962962962963,[8]
+MARA,stackelberg,1,shortest_path,0.2962962962962963,[8]
+MARA,stackelberg,1,betweenness,0.3915343915343915,[2]
+MARA,stackelberg,1,min_cut,0.3915343915343915,[2]
+MARA,stackelberg,1,greedy,0.2962962962962963,[8]
+MARA,blind,1,optimal,0.2962962962962963,[3]
+MARA,blind,1,shortest_path,0.2962962962962963,[8]
+MARA,blind,1,betweenness,0.3915343915343915,[2]
+MARA,blind,1,min_cut,0.3915343915343915,[2]
+MARA,blind,1,greedy,0.2962962962962963,[3]
+MARA,dirichlet,1,optimal,0.2962962962962963,[8]
+MARA,dirichlet,1,shortest_path,0.2962962962962963,[8]
+MARA,dirichlet,1,betweenness,0.3915343915343915,[2]
+MARA,dirichlet,1,min_cut,0.3915343915343915,[2]
+MARA,dirichlet,1,greedy,0.2962962962962963,[8]
+MARA,stackelberg,2,optimal,0.19047619047619047,"[2, 8]"
+MARA,stackelberg,2,shortest_path,0.19047619047619047,"[2, 8]"
+MARA,stackelberg,2,betweenness,0.3492063492063492,"[2, 5]"
+MARA,stackelberg,2,min_cut,0.3492063492063492,"[2, 5]"
+MARA,stackelberg,2,greedy,0.19047619047619047,"[2, 8]"
+MARA,blind,2,optimal,0.09523809523809523,"[3, 8]"
+MARA,blind,2,shortest_path,0.19047619047619047,"[2, 8]"
+MARA,blind,2,betweenness,0.3492063492063492,"[2, 5]"
+MARA,blind,2,min_cut,0.3492063492063492,"[2, 5]"
+MARA,blind,2,greedy,0.09523809523809523,"[3, 8]"
+MARA,dirichlet,2,optimal,0.14798941798941798,"[3, 8]"
+MARA,dirichlet,2,shortest_path,0.19047619047619047,"[2, 8]"
+MARA,dirichlet,2,betweenness,0.3492063492063492,"[2, 5]"
+MARA,dirichlet,2,min_cut,0.3492063492063492,"[2, 5]"
+MARA,dirichlet,2,greedy,0.14798941798941798,"[3, 8]"
+MARA,stackelberg,3,optimal,0.0,"[3, 4, 8]"
+MARA,stackelberg,3,shortest_path,0.09523809523809523,"[2, 3, 8]"
+MARA,stackelberg,3,betweenness,0.2857142857142857,"[2, 5, 7]"
+MARA,stackelberg,3,min_cut,0.2857142857142857,"[2, 5, 7]"
+MARA,stackelberg,3,greedy,0.09523809523809523,"[2, 3, 8]"
+MARA,blind,3,optimal,0.0,"[3, 4, 8]"
+MARA,blind,3,shortest_path,0.09523809523809523,"[2, 3, 8]"
+MARA,blind,3,betweenness,0.2857142857142857,"[2, 5, 7]"
+MARA,blind,3,min_cut,0.2857142857142857,"[2, 5, 7]"
+MARA,blind,3,greedy,0.0,"[3, 4, 8]"
+MARA,dirichlet,3,optimal,0.0,"[3, 4, 8]"
+MARA,dirichlet,3,shortest_path,0.09523809523809523,"[2, 3, 8]"
+MARA,dirichlet,3,betweenness,0.2857142857142857,"[2, 5, 7]"
+MARA,dirichlet,3,min_cut,0.2857142857142857,"[2, 5, 7]"
+MARA,dirichlet,3,greedy,0.0,"[3, 4, 8]"
+MARA,stackelberg,4,optimal,0.0,"[3, 4, 8]"
+MARA,stackelberg,4,shortest_path,0.0,"[2, 3, 4, 8]"
+MARA,stackelberg,4,betweenness,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,stackelberg,4,min_cut,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,stackelberg,4,greedy,0.0,"[2, 3, 4, 8]"
+MARA,blind,4,optimal,0.0,"[2, 3, 4, 8]"
+MARA,blind,4,shortest_path,0.0,"[2, 3, 4, 8]"
+MARA,blind,4,betweenness,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,blind,4,min_cut,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,blind,4,greedy,0.0,"[2, 3, 4, 8]"
+MARA,dirichlet,4,optimal,0.0,"[3, 4, 8]"
+MARA,dirichlet,4,shortest_path,0.0,"[2, 3, 4, 8]"
+MARA,dirichlet,4,betweenness,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,dirichlet,4,min_cut,0.19047619047619047,"[2, 5, 7, 8]"
+MARA,dirichlet,4,greedy,0.0,"[2, 3, 4, 8]"
+MARA,stackelberg,5,optimal,0.0,"[3, 4, 8]"
+MARA,stackelberg,5,shortest_path,0.0,"[2, 3, 4, 7, 8]"
+MARA,stackelberg,5,betweenness,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,stackelberg,5,min_cut,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,stackelberg,5,greedy,0.0,"[2, 3, 4, 5, 8]"
+MARA,blind,5,optimal,0.0,"[2, 3, 4, 5, 8]"
+MARA,blind,5,shortest_path,0.0,"[2, 3, 4, 7, 8]"
+MARA,blind,5,betweenness,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,blind,5,min_cut,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,blind,5,greedy,0.0,"[2, 3, 4, 5, 8]"
+MARA,dirichlet,5,optimal,0.0,"[3, 4, 8]"
+MARA,dirichlet,5,shortest_path,0.0,"[2, 3, 4, 7, 8]"
+MARA,dirichlet,5,betweenness,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,dirichlet,5,min_cut,0.09523809523809523,"[2, 3, 5, 7, 8]"
+MARA,dirichlet,5,greedy,0.0,"[2, 3, 4, 5, 8]"
+MiR100,stackelberg,1,optimal,0.38888888888888895,[15]
+MiR100,stackelberg,1,shortest_path,0.38888888888888895,[15]
+MiR100,stackelberg,1,betweenness,0.38888888888888895,[15]
+MiR100,stackelberg,1,min_cut,0.38888888888888895,[15]
+MiR100,stackelberg,1,greedy,0.38888888888888895,[15]
+MiR100,blind,1,optimal,0.38888888888888895,[15]
+MiR100,blind,1,shortest_path,0.38888888888888895,[15]
+MiR100,blind,1,betweenness,0.38888888888888895,[15]
+MiR100,blind,1,min_cut,0.38888888888888895,[15]
+MiR100,blind,1,greedy,0.38888888888888895,[15]
+MiR100,dirichlet,1,optimal,0.38888888888888895,[15]
+MiR100,dirichlet,1,shortest_path,0.38888888888888895,[15]
+MiR100,dirichlet,1,betweenness,0.38888888888888895,[15]
+MiR100,dirichlet,1,min_cut,0.38888888888888895,[15]
+MiR100,dirichlet,1,greedy,0.38888888888888895,[15]
+MiR100,stackelberg,2,optimal,0.25925925925925924,"[8, 15]"
+MiR100,stackelberg,2,shortest_path,0.25925925925925924,"[8, 15]"
+MiR100,stackelberg,2,betweenness,0.38888888888888895,"[10, 15]"
+MiR100,stackelberg,2,min_cut,0.25925925925925924,"[8, 15]"
+MiR100,stackelberg,2,greedy,0.25925925925925924,"[8, 15]"
+MiR100,blind,2,optimal,0.25925925925925924,"[8, 15]"
+MiR100,blind,2,shortest_path,0.25925925925925924,"[8, 15]"
+MiR100,blind,2,betweenness,0.38888888888888895,"[10, 15]"
+MiR100,blind,2,min_cut,0.25925925925925924,"[8, 15]"
+MiR100,blind,2,greedy,0.25925925925925924,"[8, 15]"
+MiR100,dirichlet,2,optimal,0.25925925925925924,"[8, 15]"
+MiR100,dirichlet,2,shortest_path,0.25925925925925924,"[8, 15]"
+MiR100,dirichlet,2,betweenness,0.38888888888888895,"[10, 15]"
+MiR100,dirichlet,2,min_cut,0.25925925925925924,"[8, 15]"
+MiR100,dirichlet,2,greedy,0.25925925925925924,"[8, 15]"
+MiR100,stackelberg,3,optimal,0.16666666666666666,"[7, 8, 15]"
+MiR100,stackelberg,3,shortest_path,0.25925925925925924,"[5, 8, 15]"
+MiR100,stackelberg,3,betweenness,0.25925925925925924,"[8, 10, 15]"
+MiR100,stackelberg,3,min_cut,0.16666666666666666,"[7, 8, 15]"
+MiR100,stackelberg,3,greedy,0.16666666666666666,"[7, 8, 15]"
+MiR100,blind,3,optimal,0.16666666666666666,"[7, 8, 15]"
+MiR100,blind,3,shortest_path,0.25925925925925924,"[5, 8, 15]"
+MiR100,blind,3,betweenness,0.25925925925925924,"[8, 10, 15]"
+MiR100,blind,3,min_cut,0.16666666666666666,"[7, 8, 15]"
+MiR100,blind,3,greedy,0.16666666666666666,"[7, 8, 15]"
+MiR100,dirichlet,3,optimal,0.16666666666666666,"[7, 8, 15]"
+MiR100,dirichlet,3,shortest_path,0.25925925925925924,"[5, 8, 15]"
+MiR100,dirichlet,3,betweenness,0.25925925925925924,"[8, 10, 15]"
+MiR100,dirichlet,3,min_cut,0.16666666666666666,"[7, 8, 15]"
+MiR100,dirichlet,3,greedy,0.16666666666666666,"[7, 8, 15]"
+MiR100,stackelberg,4,optimal,0.1111111111111111,"[7, 8, 11, 15]"
+MiR100,stackelberg,4,shortest_path,0.16666666666666666,"[5, 7, 8, 15]"
+MiR100,stackelberg,4,betweenness,0.16666666666666666,"[7, 8, 10, 15]"
+MiR100,stackelberg,4,min_cut,0.1111111111111111,"[7, 8, 11, 15]"
+MiR100,stackelberg,4,greedy,0.1111111111111111,"[7, 8, 9, 15]"
+MiR100,blind,4,optimal,0.1111111111111111,"[7, 8, 9, 15]"
+MiR100,blind,4,shortest_path,0.16666666666666666,"[5, 7, 8, 15]"
+MiR100,blind,4,betweenness,0.16666666666666666,"[7, 8, 10, 15]"
+MiR100,blind,4,min_cut,0.1111111111111111,"[7, 8, 11, 15]"
+MiR100,blind,4,greedy,0.1111111111111111,"[7, 8, 9, 15]"
+MiR100,dirichlet,4,optimal,0.1111111111111111,"[7, 8, 11, 15]"
+MiR100,dirichlet,4,shortest_path,0.16666666666666666,"[5, 7, 8, 15]"
+MiR100,dirichlet,4,betweenness,0.16666666666666666,"[7, 8, 10, 15]"
+MiR100,dirichlet,4,min_cut,0.1111111111111111,"[7, 8, 11, 15]"
+MiR100,dirichlet,4,greedy,0.1111111111111111,"[7, 8, 9, 15]"
+MiR100,stackelberg,5,optimal,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,stackelberg,5,shortest_path,0.16666666666666666,"[5, 6, 7, 8, 15]"
+MiR100,stackelberg,5,betweenness,0.16666666666666666,"[5, 7, 8, 10, 15]"
+MiR100,stackelberg,5,min_cut,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,stackelberg,5,greedy,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,blind,5,optimal,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,blind,5,shortest_path,0.16666666666666666,"[5, 6, 7, 8, 15]"
+MiR100,blind,5,betweenness,0.16666666666666666,"[5, 7, 8, 10, 15]"
+MiR100,blind,5,min_cut,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,blind,5,greedy,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,dirichlet,5,optimal,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,dirichlet,5,shortest_path,0.16666666666666666,"[5, 6, 7, 8, 15]"
+MiR100,dirichlet,5,betweenness,0.16666666666666666,"[5, 7, 8, 10, 15]"
+MiR100,dirichlet,5,min_cut,0.05555555555555555,"[7, 8, 9, 11, 15]"
+MiR100,dirichlet,5,greedy,0.05555555555555555,"[7, 8, 9, 11, 15]"
+Unguard,stackelberg,1,optimal,0.4174015285126397,[5]
+Unguard,stackelberg,1,shortest_path,0.4174015285126397,[5]
+Unguard,stackelberg,1,betweenness,0.44620811287477957,[10]
+Unguard,stackelberg,1,min_cut,0.4174015285126397,[5]
+Unguard,stackelberg,1,greedy,0.4174015285126397,[5]
+Unguard,blind,1,optimal,0.3827160493827161,[5]
+Unguard,blind,1,shortest_path,0.3827160493827161,[5]
+Unguard,blind,1,betweenness,0.44620811287477957,[10]
+Unguard,blind,1,min_cut,0.3827160493827161,[5]
+Unguard,blind,1,greedy,0.3827160493827161,[5]
+Unguard,dirichlet,1,optimal,0.40429071134626693,[6]
+Unguard,dirichlet,1,shortest_path,0.41661699000587893,[5]
+Unguard,dirichlet,1,betweenness,0.434408583186361,[10]
+Unguard,dirichlet,1,min_cut,0.41661699000587893,[5]
+Unguard,dirichlet,1,greedy,0.40429071134626693,[6]
+Unguard,stackelberg,2,optimal,0.366549088771311,"[5, 6]"
+Unguard,stackelberg,2,shortest_path,0.4174015285126397,"[5, 18]"
+Unguard,stackelberg,2,betweenness,0.39359200470311584,"[5, 10]"
+Unguard,stackelberg,2,min_cut,0.366549088771311,"[5, 6]"
+Unguard,stackelberg,2,greedy,0.366549088771311,"[5, 6]"
+Unguard,blind,2,optimal,0.32186948853615516,"[5, 23]"
+Unguard,blind,2,shortest_path,0.3827160493827161,"[5, 18]"
+Unguard,blind,2,betweenness,0.35890652557319225,"[5, 10]"
+Unguard,blind,2,min_cut,0.3430335097001763,"[5, 6]"
+Unguard,blind,2,greedy,0.32186948853615516,"[5, 23]"
+Unguard,dirichlet,2,optimal,0.3533398001175779,"[5, 27]"
+Unguard,dirichlet,2,shortest_path,0.40543856554967667,"[5, 18]"
+Unguard,dirichlet,2,betweenness,0.37276513815402706,"[5, 10]"
+Unguard,dirichlet,2,min_cut,0.3579641387419165,"[5, 6]"
+Unguard,dirichlet,2,greedy,0.3533398001175779,"[5, 27]"
+Unguard,stackelberg,3,optimal,0.3168724279835391,"[5, 23, 24]"
+Unguard,stackelberg,3,shortest_path,0.366549088771311,"[5, 6, 18]"
+Unguard,stackelberg,3,betweenness,0.34273956496178715,"[5, 6, 10]"
+Unguard,stackelberg,3,min_cut,0.3449931412894376,"[5, 6, 15]"
+Unguard,stackelberg,3,greedy,0.3268665490887712,"[5, 6, 27]"
+Unguard,blind,3,optimal,0.26455026455026454,"[5, 7, 23]"
+Unguard,blind,3,shortest_path,0.3430335097001763,"[5, 6, 18]"
+Unguard,blind,3,betweenness,0.3192239858906526,"[5, 6, 10]"
+Unguard,blind,3,min_cut,0.33245149911816574,"[5, 6, 15]"
+Unguard,blind,3,greedy,0.26455026455026454,"[5, 7, 23]"
+Unguard,dirichlet,3,optimal,0.29910934744268075,"[5, 6, 24]"
+Unguard,dirichlet,3,shortest_path,0.3492469135802469,"[5, 6, 18]"
+Unguard,dirichlet,3,betweenness,0.31693386243386246,"[5, 6, 10]"
+Unguard,dirichlet,3,min_cut,0.333058201058201,"[5, 6, 15]"
+Unguard,dirichlet,3,greedy,0.29910934744268075,"[5, 6, 24]"
+Unguard,stackelberg,4,optimal,0.26562806192435817,"[5, 6, 27, 28]"
+Unguard,stackelberg,4,shortest_path,0.32686654908877133,"[5, 6, 18, 23]"
+Unguard,stackelberg,4,betweenness,0.34273956496178715,"[5, 6, 10, 21]"
+Unguard,stackelberg,4,min_cut,0.29894179894179895,"[5, 6, 15, 26]"
+Unguard,stackelberg,4,greedy,0.26562806192435817,"[5, 6, 27, 28]"
+Unguard,blind,4,optimal,0.21428571428571427,"[5, 7, 23, 27]"
+Unguard,blind,4,shortest_path,0.2821869488536155,"[5, 6, 18, 23]"
+Unguard,blind,4,betweenness,0.3192239858906526,"[5, 6, 10, 21]"
+Unguard,blind,4,min_cut,0.29894179894179895,"[5, 6, 15, 26]"
+Unguard,blind,4,greedy,0.21428571428571427,"[5, 7, 23, 27]"
+Unguard,dirichlet,4,optimal,0.24388477366255143,"[5, 6, 23, 24]"
+Unguard,dirichlet,4,shortest_path,0.29411757789535564,"[5, 6, 18, 23]"
+Unguard,dirichlet,4,betweenness,0.31225690770135217,"[5, 6, 10, 21]"
+Unguard,dirichlet,4,min_cut,0.29894179894179895,"[5, 6, 15, 26]"
+Unguard,dirichlet,4,greedy,0.24388477366255143,"[5, 6, 23, 24]"
+Unguard,stackelberg,5,optimal,0.21957671957671956,"[5, 6, 26, 27, 28]"
+Unguard,stackelberg,5,shortest_path,0.2660199882422104,"[5, 6, 18, 23, 24]"
+Unguard,stackelberg,5,betweenness,0.32118361747991375,"[5, 6, 10, 15, 21]"
+Unguard,stackelberg,5,min_cut,0.2751322751322751,"[5, 6, 10, 15, 26]"
+Unguard,stackelberg,5,greedy,0.21957671957671956,"[5, 6, 26, 27, 28]"
+Unguard,blind,5,optimal,0.1746031746031746,"[5, 6, 7, 23, 27]"
+Unguard,blind,5,shortest_path,0.24250440917107582,"[5, 6, 18, 23, 24]"
+Unguard,blind,5,betweenness,0.308641975308642,"[5, 6, 10, 15, 21]"
+Unguard,blind,5,min_cut,0.2751322751322751,"[5, 6, 10, 15, 26]"
+Unguard,blind,5,greedy,0.1746031746031746,"[5, 6, 7, 23, 27]"
+Unguard,dirichlet,5,optimal,0.19821399176954732,"[5, 6, 23, 24, 28]"
+Unguard,dirichlet,5,shortest_path,0.24391769547325104,"[5, 6, 18, 23, 24]"
+Unguard,dirichlet,5,betweenness,0.2999950029394474,"[5, 6, 10, 15, 21]"
+Unguard,dirichlet,5,min_cut,0.2751322751322751,"[5, 6, 10, 15, 26]"
+Unguard,dirichlet,5,greedy,0.19821399176954732,"[5, 6, 23, 24, 28]"
