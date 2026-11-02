@@ -19,7 +19,7 @@ from Dirichlet_regime_asessment import (make_alpha, sample_groups,
 from results_io import RESULTS_DIR
 
 LAM_LIST, M_LIST = (0.0, 0.5, 1.0), (1, 10, 100)
-K_LIST, N_SEEDS = (50, 100, 250, 500, 1000, 2000), 5
+K_LIST, N_SEEDS = (50, 100, 250, 500, 1000), 5
 K_GRAPHS = ("1", "3")
 
 
@@ -43,8 +43,8 @@ def grid(graphs=tuple(GRAPHS), h_values=H_VALUES):
             for lam in LAM_LIST:
                 for M in M_LIST:
                     alpha = make_alpha(graph, h, st["placement"], lam, M)
-                    train = sample_groups(graph, alpha, K_TRAIN, SEED_TRAIN, nu)
-                    test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu)
+                    train = sample_groups(graph, alpha, K_TRAIN, SEED_TRAIN, nu, h)
+                    test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu, h)
                     opt = solve_dirichlet_milp(graph, train, h, nu)
                     j, j_ci = mean_ci(graph, test, opt["placement"], nu, K_EVAL)
                     j_st, _ = mean_ci(graph, test, st["placement"], nu, K_EVAL)
@@ -75,11 +75,11 @@ def k_convergence(graphs=K_GRAPHS, h_values=H_VALUES, lam=LAM, M=M_CONC):
         for h in h_values:
             st = solve_ctr_milp_stackelberg(graph, h, nu)
             alpha = make_alpha(graph, h, st["placement"], lam, M)
-            test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu)
+            test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu, h)
             for K in K_LIST:
                 for seed in range(101, 101 + N_SEEDS):          # disjoint from seeds 1, 2
                     t0 = time.perf_counter()
-                    train = sample_groups(graph, alpha, K, seed, nu)
+                    train = sample_groups(graph, alpha, K, seed, nu, h)
                     opt = solve_dirichlet_milp(graph, train, h, nu)
                     j, _ = mean_ci(graph, test, opt["placement"], nu, K_EVAL)
                     rows.append({"graph": graph.name, "h": h, "K": K, "seed": seed,
@@ -102,4 +102,5 @@ def k_convergence(graphs=K_GRAPHS, h_values=H_VALUES, lam=LAM, M=M_CONC):
 
 if __name__ == "__main__":
     grid()
-    k_convergence()
+    #k_convergence()
+    k_convergence(h_values=range(1, 4))

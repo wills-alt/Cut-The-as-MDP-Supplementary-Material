@@ -6,7 +6,7 @@ An attacker moves through an acyclic attack graph, modeled as a Markov decision 
 
 - **Stackelberg**: the attacker sees the deployment (MILP).
 - **Blind**: the attacker knows nothing and assumes every node is protected with the same probability.
-- **Dirichlet**: the attacker has a private random belief on where the protection is (MILP on sampled beliefs).
+- **Dirichlet**: the attacker has a private random belief on where the protection is (MILP on sampled beliefs). \rho = 0.5, M = 10, perceived detection probability min(1, h·p).
 
 ## Installation
 
@@ -28,12 +28,11 @@ All outputs go to `csv_results/`.
 | `python Sensitivity.py` | sensitivity to the belief parameters, convergence in K | sensitivity tables |
 | `python Baselines.py` | betweenness, minimum cut and greedy baselines | baselines table |
 | `python CTR_2023_comp.py` | comparison with Cut-The-Rope 2023 | comparison table |
-| `python Assumption_1_exhibit.py` | numerical exhibit of Assumption 1 | Assumption 1 table |
 | `python make_tables.py` | all LaTeX tables (`tables.tex`) |  |
 | `python plot_results.py` | figures | Figs. 3-5 |
 
 
-**Settings:** attack rate 2, defense rate 1 (exponential defender), budgets h = 1 to 5, uniform start on all non-target nodes. Dirichlet: lambda = 0.5, M = 10, 500 training beliefs (seed 1), 2000 test beliefs (seed 2). Random baseline: all deployments enumerated. The full configuration of each run is saved in `csv_results/run_info.json`.
+**Settings:** attack rate 2, defense rate 1 (exponential defender), budgets h = 1 to 5, uniform start on all non-target nodes. Dirichlet: rho = 0.5, M = 10, 500 training beliefs (seed 1), 2000 test beliefs (seed 2). Random baseline: all deployments enumerated. The full configuration of each run is saved in `csv_results/run_info.json`.
 
 **Graphs:** MARA (9 nodes), MiR100 (16 nodes), Unguard (33 nodes), defined in `GRAPHS` and exported to `csv_results/graphs/`.
 
@@ -76,8 +75,6 @@ All outputs go to `csv_results/`.
 - Part 1: reproduction of the 2023 values (`committed_matrix`, `value_committed`).
 - Part 2: ablation (`law_2023`, `law_ours`, `value_adaptive_mixed`).
 - Part 3: the 2023 game on the present model (`normal_form_value`), checked between the blind and Stackelberg values (`bracketing`).
-
-**`Assumption_1_exhibit.py`**: `exhibit` finds the boundary belief by bisection, builds the sequence converging to it (`N_SEQ = 10`) and checks Theorem 1; the helpers are `L`, `best_against`, `mix` and `empirical_radius`.
 
 **`make_tables.py`**, **`plot_results.py`**: tables and figures from the CSV files.
 

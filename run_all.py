@@ -7,7 +7,8 @@ Full pipeline:
   python baselines.py      experiment D: stronger baselines 
   python make_tables.py    all LaTeX tables -> csv_results/tables.tex
   python plot_results.py   
-Further studies: assumption1_exhibit.py (Assumption 1), ctr2023_comparison.py (CTR 2023).
+Further studies: ctr2023_comparison.py (CTR 2023). 
+belief_scaling": "q(v) = min(1, h * p(v))
 Solver: set SOLVER in Stackelberg_regime_assessment.py ("GRB" or "CBC").
 """
 import time

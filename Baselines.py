@@ -107,8 +107,8 @@ def run_graph(g, h_values=H_VALUES):
 
         # Dirichlet: built on the training beliefs, evaluated on the fresh test beliefs
         alpha = make_alpha(graph, h, x_st, LAM, M_CONC)
-        train = sample_groups(graph, alpha, K_TRAIN, SEED_TRAIN, nu)
-        test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu)
+        train = sample_groups(graph, alpha, K_TRAIN, SEED_TRAIN, nu, h)
+        test = sample_groups(graph, alpha, K_EVAL, SEED_EVAL, nu, h)
         x_dir = solve_dirichlet_milp(graph, train, h, nu)["placement"]
         greedy_dir = greedy_placement(graph, h, lambda x: expected_success(graph, train, x, nu))
         record("dirichlet", h, {"optimal": x_dir, **common, "greedy": greedy_dir},

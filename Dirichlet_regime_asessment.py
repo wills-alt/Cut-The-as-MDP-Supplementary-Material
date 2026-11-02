@@ -1,9 +1,11 @@
 """
-Dirichlet regime: the attacker holds a private belief p ~ Dir(alpha) about where
-the protection is (normalized: sum_i p_i = 1), computes its optimal policy
-pi*(p) in the belief kernel P^p, and follows it whatever the true deployment x is.
-The defender knows alpha but not p, and minimizes J_alpha(x) = E_p[ L(x, pi*(p)) ].
+Dirichlet regime: the attacker holds a private belief p ~ Dir(alpha) about how the
+protection is distributed over V_spot (sum_i p_i = 1); its perceived detection probability
+at node i is q_i = min(1, h * p_i), consistent with the budget h (sum_i h*p_i = h).
+It computes its optimal policy pi*(q) in the belief kernel P^q and follows it whatever the
+true deployment x is. The defender knows alpha but not p, and minimizes J_alpha(x) = E_p[L(x, pi*(p))].
 """
+
 import time
 import numpy as np
 from mip import Model, xsum, CONTINUOUS, BINARY, OptimizationStatus
@@ -44,9 +46,10 @@ def sample_beliefs(graph, alpha, K, seed):
     return [dict(zip(graph.V_spot, p)) for p in rng.dirichlet(a, size=K)]
 
 
-def belief_policy(graph, p, nu):
-    """pi*(p): optimal attacker policy in the belief kernel P^p (LP (19), solved exactly)."""
-    return solve_mdp(graph, graph.belief_transition(p), nu)
+def belief_policy(graph, p, nu, h):
+    """pi*(p): optimal attacker policy in the belief kernel P^p (LP (19), solved exactly). with perceived detection probability q(v) = min(1, h * p(v)) so that sum_v h*p(v) = h."""
+    q = {i: min(1.0, h * pi) for i, pi in p.items()}
+    return solve_mdp(graph, graph.belief_transition(q), nu) 
 
 
 def group_policies(policies):
@@ -116,9 +119,9 @@ def solve_dirichlet_milp(graph, groups, h, nu):
             "objective": m.objective_value, "milp_runtime_s": runtime}
 
 
-def sample_groups(graph, alpha, K, seed, nu):
+def sample_groups(graph, alpha, K, seed, nu, h):
     """Sample K beliefs, compute each attacker's policy pi*(p_k), merge identical ones."""
-    return group_policies([belief_policy(graph, p, nu)["policy"]
+    return group_policies([belief_policy(graph, p, nu, h)["policy"]
                            for p in sample_beliefs(graph, alpha, K, seed)])
 
 
@@ -147,9 +150,9 @@ def analyze_one_h_dirichlet(graph, h, nu, lam=LAM, M=M_CONC, K=K_TRAIN, K_eval=K
     st = solve_ctr_milp_stackelberg(graph, h, nu)
     alpha = make_alpha(graph, h, st["placement"], lam, M)
     t0 = time.perf_counter()
-    train = sample_groups(graph, alpha, K, seed_train, nu)
+    train = sample_groups(graph, alpha, K, seed_train, nu, h)
     attacker_runtime = (time.perf_counter() - t0) / K          # one belief: sample + DP
-    test = sample_groups(graph, alpha, K_eval, seed_eval, nu)
+    test = sample_groups(graph, alpha, K_eval, seed_eval, nu, h)
 
     opt = solve_dirichlet_milp(graph, train, h, nu)
     sp_placement, _ = shortest_path_placement(graph, h, nu)

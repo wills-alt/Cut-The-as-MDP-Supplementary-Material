@@ -1,5 +1,5 @@
 {
- "date_utc": "2026-10-09T11:48:39+00:00",
+ "date_utc": "2026-11-02T12:08:49+00:00",
  "solver": {
   "name": "CBC (COIN-OR)",
   "gurobipy_version": null,
@@ -45,14 +45,14 @@
   "ties": "attacker: first action in edge-list order; blind defender: first deployment in lexicographic order; shortest path: node index"
  },
  "wall_clock_s": {
-  "stackelberg_MARA": 2.49,
+  "stackelberg_MARA": 0.08,
   "stackelberg_MiR100": 0.04,
-  "stackelberg_Unguard": 20.92,
+  "stackelberg_Unguard": 21.2,
   "blind_MARA": 0.0,
   "blind_MiR100": 0.01,
-  "blind_Unguard": 21.71,
-  "dirichlet_MARA": 0.68,
+  "blind_Unguard": 22.99,
+  "dirichlet_MARA": 0.72,
   "dirichlet_MiR100": 1.11,
-  "dirichlet_Unguard": 86.27
+  "dirichlet_Unguard": 506.02
  }
 }

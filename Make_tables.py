@@ -74,7 +74,7 @@ def dirichlet_table():
                pm(r["gain"], r["gain_ci"]), f(r["V_random_avg"]), f(r["V_shortest"]),
                f(r["V_worst_case"]), f(r["V_St_value"])] for r in rows[g]])
             for g in GRAPHS]
-    return table(f"Dirichlet regime ($\\lambda={r0['lam']}$, $M={r0['M']}$): $J_\\alpha$ estimated on "
+    return table(f"Dirichlet regime ($\\rho={r0['lam']}$, $M={r0['M']}$): $J_\\alpha$ estimated on "
                  f"$K'={r0['K_eval']}$ fresh beliefs (seed {r0['seed_eval']}), $x^{{\\mathrm{{Dir}}}}$ "
                  f"computed from $K={r0['K']}$ beliefs (seed {r0['seed_train']}); $\\pm$: 95\\% "
                  "confidence half-width, paired for the gain $J_\\alpha(x^{\\mathrm{St}})-"
@@ -104,21 +104,21 @@ def runtime_table():
     return "\n".join(out)
 
 
-def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3),
-                             ("Unguard", 4), ("Unguard", 5))):
+def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3))):
+                             #("Unguard", 4), ("Unguard", 5))):
     """Experiment B1: gain / price of x^Dir for each (lambda, M); needs sensitivity_grid.csv."""
     with open(RESULTS_DIR / "sensitivity_grid.csv", newline="") as fh:
         rows = list(csv.DictReader(fh))
     cell = {(r["graph"], int(r["h"]), float(r["lam"]), int(r["M"])): r for r in rows}
     settings = sorted({(float(r["lam"]), int(r["M"])) for r in rows})
     out = ["\\begin{table*}[t]", "\\centering", "\\footnotesize",
-           "\\caption{Sensitivity of the Dirichlet regime to the reconnaissance quality $\\lambda$ and "
+           "\\caption{Sensitivity of the Dirichlet regime to the reconnaissance quality $\\rho$ and "
            "the concentration $M$: gain $J_\\alpha(x^{\\mathrm{St}})-J_\\alpha(x^{\\mathrm{Dir}})$ "
            "and price $\\max_\\pi L(x^{\\mathrm{Dir}},\\pi)-V^{\\mathrm{St}}$ (paired 95\\% half-width of the "
            f"gain $\\le$ {max(float(r['gain_ci']) for r in rows):.4f}). MiR100: a single attacker policy in "
            "every setting, gain and price are 0.}",
            "\\label{tab:sensitivity}", "\\begin{tabular}{rr" + "c" * len(cases) + "}", "\\toprule",
-           "$\\lambda$ & $M$ & " + " & ".join(f"{g} $h={h}$" for g, h in cases) + " \\\\", "\\midrule"]
+           "$\\rho$ & $M$ & " + " & ".join(f"{g} $h={h}$" for g, h in cases) + " \\\\", "\\midrule"]
     for title, val in (("Gain", lambda r: float(r["gain"])),
                        ("Price", lambda r: float(r["worst_case"]) - float(r["V_St"]))):
         out.append(f"\\multicolumn{{{len(cases) + 2}}}{{l}}{{\\emph{{{title}}}}} \\\\")
@@ -137,7 +137,7 @@ def k_table(cases = (("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), (
     Ks = sorted({int(r["K"]) for r in rows})
     n_seeds = len({r["seed"] for r in rows})
     out = ["\\begin{table*}[t]", "\\centering", "\\footnotesize",
-           "\\caption{Convergence in the number $K$ of training beliefs ($\\lambda=0.5$, $M=10$): "
+           "\\caption{Convergence in the number $K$ of training beliefs ($\\rho=0.5$, $M=10$): "
            f"out-of-sample $J_\\alpha(x^{{\\mathrm{{Dir}}}})$ on a fixed set of $K'=2000$ beliefs, mean "
            f"(max $-$ min) over {n_seeds} training seeds, and largest MILP time (s).}}",
            "\\label{tab:K}", "\\begin{tabular}{r" + "c" * len(cases) + "r}", "\\toprule",
@@ -168,7 +168,7 @@ def baselines_table():
            "node index). Betweenness: top-$h$ nodes by directed betweenness centrality; min cut: "
            "minimum node cut between entries and targets, completed or truncated to $h$ nodes by "
            "betweenness; greedy: adds the node that most decreases the regime's objective. "
-           "Dirichlet: $\\lambda=0.5$, $M=10$, evaluated on $K'=2000$ fresh beliefs.}",
+           "Dirichlet: $\\rho=0.5$, $M=10$, evaluated on $K'=2000$ fresh beliefs.}",
            "\\label{tab:baselines}", "\\begin{tabular}{llccccc}", "\\toprule",
            "Graph & $h$ & Optimal & Shortest path & Betweenness & Min cut & Greedy \\\\"]
     for regime, title in regimes:

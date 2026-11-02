@@ -11,7 +11,7 @@ import itertools, math, random, time
 from results_io import save_results
 
 SOLVER = "CBC"          # "CBC" (open source) or "GRB" (Gurobi);
-TIME_LIMIT = 600        # seconds per MILP
+TIME_LIMIT = 3600        # seconds per MILP
 H_VALUES = range(1, 6)  # budgets h shown in the figures
 
 # =============================================================================
