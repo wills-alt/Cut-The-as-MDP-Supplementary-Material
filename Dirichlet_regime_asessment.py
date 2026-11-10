@@ -1,9 +1,10 @@
 """
 Dirichlet regime: the attacker holds a private belief p ~ Dir(alpha) about how the
-protection is distributed over V_spot (sum_i p_i = 1); its perceived detection probability
-at node i is q_i = min(1, h * p_i), consistent with the budget h (sum_i h*p_i = h).
+protection is distributed over V_spot (sum_i p_i = 1). It places h sensors without
+replacement according to p; its perceived detection probability at node i is the
+inclusion probability q_i = Pr(i receives a sensor | p), with q_i <= 1 and sum_i q_i = h.
 It computes its optimal policy pi*(q) in the belief kernel P^q and follows it whatever the
-true deployment x is. The defender knows alpha but not p, and minimizes J_alpha(x) = E_p[L(x, pi*(p))].
+true deployment x is. The defender knows alpha but not p, and minimizes J_alpha(x) = E_p[L(x, pi*(p))]..
 """
 
 import time
@@ -16,20 +17,21 @@ from Stackelberg_regime_assessment import (start_distribution, solve_mdp, best_r
                                           shortest_path_placement, solve_ctr_milp_stackelberg,
                                           print_summary, timing_columns, H_VALUES)
 from results_io import save_results
+from Inclusion_probabilities import inclusion_probabilities
 
 LAM, M_CONC = 0.5, 10        # main setting: reconnaissance quality and concentration
 K_TRAIN, K_EVAL = 500, 2000  # samples used by the MILP / fresh samples for evaluation
 SEED_TRAIN, SEED_EVAL = 1, 2
 
 
-def make_alpha(graph, h, x_st, lam, M, floor=1e-3):
+def make_alpha(graph, h, x_st, lam, M, floor=0.0):
     """
     Dirichlet parameter alpha = M * m_lam over V_spot:
         m_lam = lam * x_St / h + (1 - lam) / |V_spot|
     lam in [0, 1]: reconnaissance quality (0: uniform mean belief, as the blind attacker;
                    1: mean belief on the Stackelberg deployment x_St);
     M > 0       : concentration (confidence of the attacker in its belief).
-    alpha_i >= floor keeps every component strictly positive (needed when lam = 1).
+    alpha_i = 0 outside x_St when lam = 1: those nodes get belief 0.
     """
     n = len(graph.V_spot)
     x_st = set(x_st)
@@ -47,9 +49,11 @@ def sample_beliefs(graph, alpha, K, seed):
 
 
 def belief_policy(graph, p, nu, h):
-    """pi*(p): optimal attacker policy in the belief kernel P^p (LP (19), solved exactly). with perceived detection probability q(v) = min(1, h * p(v)) so that sum_v h*p(v) = h."""
-    q = {i: min(1.0, h * pi) for i, pi in p.items()}
-    return solve_mdp(graph, graph.belief_transition(q), nu) 
+    """pi*(p): best response when the attacker places h sensors without
+       replacement according to p; perceived detection = inclusion probability."""
+    q = inclusion_probabilities(p, h)
+    return solve_mdp(graph, graph.belief_transition(q), nu)
+
 
 
 def group_policies(policies):

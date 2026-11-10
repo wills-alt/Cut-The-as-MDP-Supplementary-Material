@@ -104,8 +104,7 @@ def runtime_table():
     return "\n".join(out)
 
 
-def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3))):
-                             #("Unguard", 4), ("Unguard", 5))):
+def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3), ("Unguard", 4), ("Unguard", 5))):
     """Experiment B1: gain / price of x^Dir for each (lambda, M); needs sensitivity_grid.csv."""
     with open(RESULTS_DIR / "sensitivity_grid.csv", newline="") as fh:
         rows = list(csv.DictReader(fh))
@@ -115,8 +114,9 @@ def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard
            "\\caption{Sensitivity of the Dirichlet regime to the reconnaissance quality $\\rho$ and "
            "the concentration $M$: gain $J_\\alpha(x^{\\mathrm{St}})-J_\\alpha(x^{\\mathrm{Dir}})$ "
            "and price $\\max_\\pi L(x^{\\mathrm{Dir}},\\pi)-V^{\\mathrm{St}}$ (paired 95\\% half-width of the "
-           f"gain $\\le$ {max(float(r['gain_ci']) for r in rows):.4f}). MiR100: a single attacker policy in "
-           "every setting, gain and price are 0.}",
+            f"gain $\\le$ {max(float(r['gain_ci']) for r in rows):.4f}). At $\\rho=1$ the attacker "
+           "perceives $x^{\\mathrm{St}}$ exactly, so the results do not depend on $M$. MiR100: gain 0 "
+           "except at $\\rho=1$ ($h=2$: 0.0926; $h=3$: 0.1111; $h=4$: 0.0556; $h=5$: 0)}",
            "\\label{tab:sensitivity}", "\\begin{tabular}{rr" + "c" * len(cases) + "}", "\\toprule",
            "$\\rho$ & $M$ & " + " & ".join(f"{g} $h={h}$" for g, h in cases) + " \\\\", "\\midrule"]
     for title, val in (("Gain", lambda r: float(r["gain"])),
@@ -129,8 +129,7 @@ def sensitivity_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard
     return "\n".join(out)
 
 
-def k_table(cases = (("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3),
-                   ("Unguard", 4), ("Unguard", 5))):
+def k_table(cases=(("MARA", 1), ("MARA", 2), ("Unguard", 1), ("Unguard", 2), ("Unguard", 3))):
     """Experiment B2: out-of-sample J(x^Dir) vs K (mean, spread over seeds); sensitivity_K.csv."""
     with open(RESULTS_DIR / "sensitivity_K.csv", newline="") as fh:
         rows = list(csv.DictReader(fh))
